@@ -3,7 +3,7 @@ package login;
 import connection.ConnectionFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServlet; //para trabalhar com os protocolos http
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import java.sql.ResultSet;
 @WebServlet("/login")
 public class Login extends HttpServlet{
     
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //PARA QUE ISSO MESMO ?
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,9 +39,9 @@ public class Login extends HttpServlet{
             
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
-                response.sendRedirect("dashboard.html");
+                response.sendRedirect("pages/menu.html");
             }else {
-                out.println("<h2>Dados errados.</h2>");
+                out.println("<h2> deu merda </h2>");
             }
         } catch (Exception e) {
             e.printStackTrace();

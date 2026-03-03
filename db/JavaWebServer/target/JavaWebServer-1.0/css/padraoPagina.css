@@ -1,0 +1,31 @@
+body{
+    height: 100vh;
+    display: flex;
+}
+
+body main{
+        margin-top: 50px; /*coloquei a main dentro de uma caixinha com as margens.*/
+        margin-bottom: 50px; 
+        margin-left: 20px;
+        margin-right: 20px;
+}
+
+header{
+    background-color: var(--primary-corfundolight);
+    height: 50px;
+    width: 100vw;
+    display: block; /*trava na posição colocada*/
+    position: fixed; /* fixa na hora da rolagem da página, mesmo com a rolagem permanece no mesmo lugar da visualização*/ 
+}
+
+footer{
+    background-color: var(--primary-corfundolight);
+    height: 50px;
+    width: 100vw;
+    position: absolute; /* fica no final de TODA página*/
+    bottom: 0; /* define a posição relativo a div pai */
+}
+
+button{
+    cursor: pointer;
+}

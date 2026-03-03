@@ -1,12 +1,13 @@
 :root {
     /* Cores principais */
-    --primary-dark: #0f4c75;
-    --primary-medium: #3282b8;
+    --primary-corfundolight: #4EB0E6;
+    --primary-corfundodark: #194B77;
     --primary-light: #bbe1fa;
 
     /* Cor de ação (botões / confirmação) */
     --success: #1b9c85;
     --success-hover: #157a6e;
+    --button-padrao: #ffffff;
 
     /* Neutros */
     --white: #ffffff;
@@ -16,4 +17,7 @@
 
     /* Sombra */
     --shadow-default: #333333;
+    
+    /* cor de alertas */
+    --red-aviso: #F53C3D;
 }

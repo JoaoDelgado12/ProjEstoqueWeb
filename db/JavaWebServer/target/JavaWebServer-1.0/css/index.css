@@ -1,8 +1,8 @@
 body {
 margin: 0px;
-height: 90vh;
+height: 100vh;
 display: flex;
-background: linear-gradient(150deg,var(--primary-dark), var(--primary-medium) ); /* var é para referencia uma varivel que colocamos no css, simular uma variavel*/
+background: linear-gradient(190deg, var(--primary-corfundolight), var(--primary-corfundodark)); /* var é para referencia uma varivel que colocamos no css, simular uma variavel*/
 justify-content: center; /*centraliza na horizontal*/
 align-items: center; /*centraliza na vertical*/
 }
@@ -19,6 +19,16 @@ align-items: center; /*centraliza na vertical*/
     text-align: center;
     margin-bottom: 25px;
     color: var(--gray-dark);
+}
+
+#titulo{
+    font-family:cursive;
+    color: var(--gray-dark);
+}
+
+#esqueceSenha{
+    text-align: center;
+    color: var(--red-aviso);
 }
 
 label{
@@ -47,10 +57,9 @@ button{
     background-color: var(--success);
     border: none;
     border-radius: 5px;
-    color: var(--white);
+    color: var(--button-padrao);
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
     transition: 0.3s;
 }
 

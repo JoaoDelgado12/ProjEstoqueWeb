@@ -1,0 +1,33 @@
+body{
+    height: 100vh;
+    display: flex;
+}
+
+.aligncontainer{
+    height: 200px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    height: 190px;
+    width: 150px;
+    text-align: center;
+    display: flex; /* para habilitar a alteração de disposição*/
+    flex-direction: column; /* como será empilhado os conteudos*/
+    justify-content: flex-end; /* joga o conteudo para baixo no container*/
+    margin: 15px;
+    box-shadow: 4px 5px 15px var(--gray-dark); 
+    border-radius: 10px;
+}
+
+main button{
+    height: 190px;
+    width: 150px;
+    background-color: var(--button-padrao);
+    border-radius: 10px;
+    border: 0px;
+    
+}
