@@ -2,7 +2,7 @@ package Dao;
 
 import connection.ConnectionFactory;
 import java.sql.PreparedStatement;
-import model.CadastroUsuarioModel;
+import Model.CadastroUsuarioModel;
 
 /**
  *
@@ -16,24 +16,24 @@ public class CadastrosUserDAO {
             "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,)";
         try(var con = ConnectionFactory.getConnection()){
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, user.getNome());
-            stmt.setString(2, user.getSobrenome());
-            stmt.setString(3, user.getMatricula());
-            stmt.setString(4, user.getCpf());
-            stmt.setString(5, user.getSexo());
-            stmt.setString(6, user.getDtaNascimento());
-            stmt.setString(7, user.getEmail());
-            stmt.setLong(8, user.getTelefone());
-            stmt.setString(9, user.getFuncao());
-            stmt.setLong(10, user.getCep());
-            stmt.setString(11, user.getEndereco());
-            stmt.setString(11, user.getNumero());
-            stmt.setString(7, user.getBairro());
-            stmt.setString(8, user.getCidade());
-            stmt.setString(9, user.getEstado());
-            stmt.setString(10, user.getComplemento());
-            stmt.setString(12, user.getUsuario());
-            stmt.setString(13, user.getSenha());
+            stmt.setString(3, user.nome());
+            stmt.setString(4, user.sobrenome());
+            stmt.setString(5, user.matricula());
+            stmt.setString(6, user.cpf());
+            stmt.setString(7, user.sexo());
+            stmt.setString(10, user.DtaNascimento());
+            stmt.setString(8, user.email());
+            stmt.setString(9, user.telefone());
+            stmt.setString(11, user.funcao());
+            stmt.setString(12, user.cep());
+            stmt.setString(13, user.endereco());
+            stmt.setString(14, user.numero());
+            stmt.setString(15, user.bairro());
+            stmt.setString(16, user.cidade());
+            stmt.setString(17, user.estado());
+            stmt.setString(18, user.complemento());
+            stmt.setString(1, user.usuario());
+            stmt.setString(2, user.senha());
             
             
             

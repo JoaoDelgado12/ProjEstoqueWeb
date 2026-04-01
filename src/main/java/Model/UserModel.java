@@ -8,29 +8,8 @@ package Model;
  *
  * @author Master
  */
-public class UserModel {
-    private int id;
-    private String username;
-    private String senha;
-    
-    public UserModel(){
-        
+public record UserModel(String nome, String senha, int id) { 
+    public UserModel(String nome, String senha) {
+        this(nome, senha, -1); // OBRIGATÓRIO chamar o construtor principal aqui
     }
-    
-    public String getUsername(){
-        return username;
-    }
-    
-    public void setUsername(String username){
-        this.username = username;
-    }
-    
-    public String getSenha(){
-        return senha;
-    }
-    
-    public void setSenha(String senha){
-        this.senha = senha;
-    }
-    
 }

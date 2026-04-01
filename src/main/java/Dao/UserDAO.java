@@ -21,8 +21,8 @@ public class UserDAO {
         try (var con = ConnectionFactory.getConnection()){
             
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, userModel.getUsername());
-            stmt.setString(2, userModel.getSenha());
+            stmt.setString(1, userModel.nome());
+            stmt.setString(2, userModel.senha());
             
             ResultSet rs = stmt.executeQuery();
             

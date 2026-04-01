@@ -1,6 +1,8 @@
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\connection\ConnectionFactory.java
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\Controller\LoginServelet.java
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\Dao\UserDAO.java
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\delga\javawebserver\JakartaRestConfiguration.java
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\delga\javawebserver\resources\JakartaEE11Resource.java
-C:\Users\Master\Documents\ProjSiteEstoq\db\JavaWebServer\src\main\java\Model\UserModel.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\connection\ConnectionFactory.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\Controller\CadastroController.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\Controller\LoginServelet.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\Dao\CadastrosUserDAO.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\Dao\UserDAO.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\delga\javawebserver\JakartaRestConfiguration.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\delga\javawebserver\resources\JakartaEE11Resource.java
+C:\Users\Master\Documents\ProjSiteEstoq\src\main\java\Model\UserModel.java

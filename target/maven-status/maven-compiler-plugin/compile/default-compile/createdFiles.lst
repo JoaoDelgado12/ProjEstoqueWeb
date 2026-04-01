@@ -1,6 +1,0 @@
-delga\javawebserver\resources\JakartaEE11Resource.class
-connection\ConnectionFactory.class
-Dao\UserDAO.class
-delga\javawebserver\JakartaRestConfiguration.class
-Controller\LoginServelet.class
-Model\UserModel.class
