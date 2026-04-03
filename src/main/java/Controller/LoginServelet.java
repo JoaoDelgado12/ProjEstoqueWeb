@@ -25,8 +25,8 @@ public class LoginServelet extends HttpServlet {
     protected void doPost(HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
-        String usuario = request.getParameter("user");
-        String senha = request.getParameter("passw");
+        String usuario = request.getParameter("usuario");
+        String senha = request.getParameter("senha");
        
         UserModel userModel = new UserModel(usuario,senha);
         

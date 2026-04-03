@@ -1,0 +1,11 @@
+Model\ProdutoModel.class
+delga\javawebserver\resources\JakartaEE11Resource.class
+connection\ConnectionFactory.class
+Model\CadastroUsuarioModel.class
+Dao\CadastrosUserDAO.class
+Dao\UserDAO.class
+delga\javawebserver\JakartaRestConfiguration.class
+Model\CadastroProdutoModel.class
+Controller\LoginServelet.class
+Model\UserModel.class
+Controller\CadastroController.class

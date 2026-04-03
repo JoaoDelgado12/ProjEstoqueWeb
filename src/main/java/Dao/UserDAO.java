@@ -16,17 +16,17 @@ import java.sql.ResultSet;
 public class UserDAO {
     
     public boolean validarLogin(UserModel userModel){
-        String sql = "SELECT * FROM users WHERE username= ? AND psw= ?";
+        String sql = "SELECT * FROM cadastro_usuario WHERE usuario = ? AND senha = ?";
         
         try (var con = ConnectionFactory.getConnection()){
             
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, userModel.nome());
+            stmt.setString(1, userModel.usuario());
             stmt.setString(2, userModel.senha());
             
             ResultSet rs = stmt.executeQuery();
-            
             return rs.next();
+            
         } catch (Exception e) {
             e.printStackTrace();
             return false;

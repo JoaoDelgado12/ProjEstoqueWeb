@@ -13,7 +13,7 @@ import Model.CadastroUsuarioModel;
  *
  * @author Master
  */
-@WebServlet("/Cadastro")
+@WebServlet("/cadastro")
 public class CadastroController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
@@ -37,10 +37,11 @@ public class CadastroController extends HttpServlet {
         request.getParameter("estado"),
         request.getParameter("complemento"));
         
+        
         CadastrosUserDAO dao = new CadastrosUserDAO();
         
         if(dao.cadastrar(user)){
-            response.sendRedirect("pages/dashboard.html");
+            response.sendRedirect("pages/menu.html");
         }else{
             response.sendRedirect("pages/cadastro.html");
         }

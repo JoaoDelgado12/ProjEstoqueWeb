@@ -8,8 +8,8 @@ package Model;
  *
  * @author Master
  */
-public record UserModel(String nome, String senha, int id) { 
-    public UserModel(String nome, String senha) {
-        this(nome, senha, -1); // OBRIGATÓRIO chamar o construtor principal aqui
+public record UserModel(String usuario, String senha, int id) { 
+    public UserModel(String usuario, String senha) {
+        this(usuario, senha, -1); // OBRIGATÓRIO chamar o construtor principal aqui
     }
 }
