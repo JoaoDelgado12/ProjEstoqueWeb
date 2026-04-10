@@ -24,6 +24,17 @@ jobs:
       - name: Build da aplicação
         run: mvn clean package -DskipTests
         
+      - name: build mysql8
+        uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: "8.0"
+          root-password: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+
+      - name: executar o
+        run: |
+          mysql -u root -p"${{ secrets.MYSQL_ROOT_PASSWORD}}  < db/init.sql
+      
+
       - name: Salvar artefato
         uses: actions/upload-artifact@v4
         with:
