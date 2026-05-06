@@ -10,7 +10,7 @@ import util.SenhaHash;
  * @author Master
  */
 
-public class CadastrosUserDAO {
+public class CadastrosUserDAO2 {
     public boolean cadastrar(CadastroUsuarioModel user){
         String sql = "INSERT INTO cadastro_usuario" + 
             "(nome, sobrenome, matricula, dta_nascimento, sexo, cpf, cep, endereco, estado, bairro, "

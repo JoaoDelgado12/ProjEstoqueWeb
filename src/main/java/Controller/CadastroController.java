@@ -17,7 +17,7 @@ import Model.CadastroUsuarioModel;
 public class CadastroController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
-        CadastroUsuarioModel user = new CadastroUsuarioModel(
+        CadastroUsuarioModel cadastroUser = new CadastroUsuarioModel(
         request.getParameter("nameFirst"),
         request.getParameter("sobrenome"),
         request.getParameter("matricula"),
@@ -38,10 +38,10 @@ public class CadastroController extends HttpServlet {
         request.getParameter("telefone")
         );
         
+      
+        CadastrosUserDAO cadastroDao = new CadastrosUserDAO();
         
-        CadastrosUserDAO dao = new CadastrosUserDAO();
-        
-        if(dao.cadastrar(user)){
+        if(cadastroDao.cadastrar(cadastroUser)){
             response.sendRedirect(request.getContextPath() + "/pages/menu.html");
         }else{
             response.sendRedirect(request.getContextPath() + "/pages/cadastro.html");

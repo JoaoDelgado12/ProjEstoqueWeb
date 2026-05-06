@@ -24,10 +24,12 @@ public class UserDAO {
             
 	            if(rs.next()){
 	                String hashBanco = rs.getString("senha");
+	                stmt.close();
 	                return true;
 	                // return SenhaHash.verificarSenha(usermodel.getSenha(),hashBanco);
 	            }
             }
+            stmt.close();
             return false;
             
         } catch (Exception e) {

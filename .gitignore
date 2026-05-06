@@ -1,2 +1,14 @@
-.env
+# Build
 /target/
+
+# IDE
+.classpath
+.project
+.settings/
+nb-configuration.xml
+
+# Environment
+.env
+
+# Opcional
+/db/
