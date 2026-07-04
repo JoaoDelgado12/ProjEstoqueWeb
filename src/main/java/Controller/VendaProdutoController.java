@@ -39,11 +39,10 @@ public class VendaProdutoController extends HttpServlet{
 		    	precoTotal += Double.parseDouble(item.getDesconto());
 		    	desconto += Double.parseDouble(item.getDesconto());
 		    }
-		    System.err.println("CONSEGUIU RECEBER");
+
 		    VendaProdutoDAO.registrarVenda(itensCarrinho, precoTotal, desconto );
 		    
 		    response.setStatus(HttpServletResponse.SC_OK);
-		    System.err.println("MANDOU O OK");
 		    
 	    }catch(Exception e) {
 	    	System.err.println("DEU ALGUM ERRO GENERICO");

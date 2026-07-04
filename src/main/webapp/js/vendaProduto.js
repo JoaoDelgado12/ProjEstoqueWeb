@@ -194,6 +194,7 @@ btnSubmit.addEventListener('click', async () => {
 	        window.location.reload(); 
 	    } else {
 	        alert('Erro ao processar a venda no servidor. Venda não realizada.');
+            limparCamposProduto
 	    }
 	}catch(erro){
 		alert('Não foi possível conectar ao servidor.');
