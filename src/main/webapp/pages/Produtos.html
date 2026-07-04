@@ -8,9 +8,26 @@
     <link rel="stylesheet" type="text/css" href="../css/color.css"> 
     <link rel="stylesheet" type="text/css" href="../css/padraoPagina.css">
     <link rel="stylesheet" type="text/css" href="../css/Produto.css">
+    <script src="../js/Produto.js"> </script> 
 </head>
 <body>
     <header> 
+        <div class="notification-container">
+            <button class="notification-btn" id="notiBtn" title="Notificações">
+                🔔
+                <span class="notification-badge" id="notiBadge">0</span>
+            </button>
+
+            <div class="notification-dropdown" id="notiDropdown">
+                <div class="dropdown-header">
+                    <span>Notificações de Estoque</span>
+                </div>
+                <div class="notification-history" id="notiHistorico">
+
+                </div>
+            </div>
+        </div>
+
         <div class="grupo-mais">
             <div class="secao-mais-off">
                 <ul>
@@ -36,9 +53,9 @@
             <div class="profile-off">
                 <ul>
                     <li> <a class="btn-invPerfil">Perfil</a> </li>
-                    <li> <form action="../logout" method="POST">
+                        <li> <form action="../logout" method="POST">
                             <button type="submit" class="btn-invPerfil">Sair do Sistema</button>
-                        </form> 
+                            </form> 
                     </li>
                 </ul>
             </div>
@@ -70,8 +87,8 @@
     <footer>
 
     </footer>
-    <script src="../js/Produto.js"> </script> 
     <script src="../js/padraoPagina.js"> </script> 
     <script src="../js/logout.js"></script>
+    <script src="../js/notificaoProduto.js"></script>
 </body>
 </html>

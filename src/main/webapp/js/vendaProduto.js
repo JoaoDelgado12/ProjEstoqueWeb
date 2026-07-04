@@ -1,7 +1,4 @@
-// Elementos do DOM
-const form = document.getElementById('formVenda');
 const inputNome = document.getElementById('nome');
-const inputPreco = document.getElementById('precoUnitario');
 const inputQuantidade = document.getElementById('quantidade');
 const inputDesconto = document.getElementById('desconto');
 
@@ -11,44 +8,99 @@ const lblTotalGeral = document.getElementById('lblTotalGeral');
 const btnAdicionar = document.getElementById('btnAdicionar');
 const carrinhoLista = document.getElementById('carrinhoLista');
 const carrinhoVazio = document.getElementById('carrinhoVazio');
-const dadosCarrinhoHidden = document.getElementById('dadosCarrinhoHidden');
+const btnSubmit = document.getElementById('btn-submit');
 
 let carrinho = [];
+let dados;
 
-// Função para calcular o total em tempo de digitação
+async function autoCompletar(){
+	const url = `http://localhost:8080/api/consulta/produto` 
+	
+    const resp = await fetch(url);
+    dados = await resp.json();
+
+    const inputNome = document.getElementById("nome");
+    const janelaAuto = document.getElementById("janelaAuto");
+
+    inputNome.addEventListener('input', function(){
+        if(this.value.toLowerCase().length === 0){
+			 janelaAuto.innerHTML = ''; 
+			 return;
+		 }
+        janelaAuto.innerHTML = '';
+        
+        const tresFiltrados = dados.filter( item => item?.nome?.toLowerCase().includes(this.value.toLowerCase())).slice(0,3);
+
+        tresFiltrados.forEach(produto => {
+                const li = document.createElement("li");
+                li.classList.add('topico-item');
+                li.innerHTML = produto.nome;
+
+                li.addEventListener('click', function() {
+                    inputNome.value = produto.nome;
+                    calcularTotalItem();
+                    janelaAuto.innerHTML = '';
+                });
+
+                janelaAuto.appendChild(li);
+
+        });
+    })
+    
+    document.addEventListener('click', (e) => {
+        if(e.target !== inputNome){
+            janelaAuto.innerHTML = '';
+        }
+    })
+}
+
+inputNome.addEventListener('input', autoCompletar);
+
 function calcularTotalItem() {
-    const preco = parseFloat(inputPreco.value) || 0;
+    let valorProduto;
+    let quantidadeProduto;
+    dados.forEach(produto => {
+        if(inputNome.value.toLowerCase().includes(produto.nome.toLowerCase())){
+            valorProduto = produto.precoVendaUni;
+            quantidadeProduto = produto.quantidade;
+        }
+    })
+    const preco = parseFloat(valorProduto) || 0;
     const qtd = parseInt(inputQuantidade.value) || 0;
     const desc = parseFloat(inputDesconto.value) || 0;
 
+    if (quantidadeProduto - inputQuantidade.value < 0){
+        alert(`Estoque insuficiente: ${quantidadeProduto} em estoque`);
+        limparCamposProduto
+        return;
+    }
+  
     let total = (preco * qtd) - desc;
-    if (total < 0) total = 0; // Impede total negativo
+    if (total < 0) total = 0; 
 
     lblTotalItem.innerText = total.toFixed(2);
     return total;
 }
 
-// Ouvintes de evento para atualizar o cálculo em tempo real
-[inputPreco, inputQuantidade, inputDesconto].forEach(input => {
+[inputQuantidade, inputDesconto].forEach(input => {
     input.addEventListener('input', calcularTotalItem);
 });
 
-// Evento de Adicionar ao Carrinho
 btnAdicionar.addEventListener('click', () => {
-    // Validação simples
-    if (!inputNome.value || !inputPreco.value || inputQuantidade.value < 1) {
+
+    if (!inputNome.value.trim() || inputQuantidade.value < 1) {
         alert('Por favor, preencha corretamente os campos do produto antes de adicionar.');
+        limparCamposProduto
         return;
     }
+
 
     const totalItem = calcularTotalItem();
 
     // Objeto do Item
     const novoItem = {
-        id: Date.now(),
         nome: inputNome.value,
         quantidade: parseInt(inputQuantidade.value),
-        precoUnitario: parseFloat(inputPreco.value),
         desconto: parseFloat(inputDesconto.value) || 0,
         total: totalItem
     };
@@ -58,16 +110,15 @@ btnAdicionar.addEventListener('click', () => {
     limparCamposProduto();
 });
 
-// Função para atualizar a lista visual do carrinho
+
 function atualizarInterfaceCarrinho() {
-    // Remove o texto de carrinho vazio
+
     if(carrinho.length > 0) {
         carrinhoVazio.style.display = 'none';
     } else {
         carrinhoVazio.style.display = 'block';
     }
 
-    // Renderiza os itens
     carrinhoLista.innerHTML = '';
     if (carrinho.length === 0) carrinhoLista.appendChild(carrinhoVazio);
 
@@ -81,7 +132,7 @@ function atualizarInterfaceCarrinho() {
         li.innerHTML = `
             <div class="item-info">
                 <strong>${item.nome}</strong>
-                <span>Qtd: ${item.quantidade} | Desc: R$ ${item.desconto.toFixed(2)}</span>
+                <span>Qtd: ${item.quantidade} | Desc: R$ ${parseFloat(item.desconto).toFixed(2)}</span>
             </div>
             <div class="container-preco-remover">
                 <div class="item-preco">R$ ${item.total.toFixed(2)}</div>
@@ -91,10 +142,8 @@ function atualizarInterfaceCarrinho() {
 
         const btnRemover = li.querySelector('.btn-remover');
         btnRemover.addEventListener('click', () => {
-            // Remove 1 elemento do array 'carrinho' na posição do index atual
             carrinho.splice(index, 1); 
             
-            // Aplica uma animação suave de saída antes de atualizar a lista (opcional)
             li.style.animation = 'surgir 0.2s reverse forwards';
             
             // Aguarda a animação terminar e atualiza o carrinho na tela
@@ -106,16 +155,12 @@ function atualizarInterfaceCarrinho() {
         carrinhoLista.appendChild(li);
     });
 
-    // Atualiza o display de Total Geral
     lblTotalGeral.innerText = totalGeral.toFixed(2);
 
-    // Alimenta o input oculto convertendo a lista em JSON para enviar no POST
-    dadosCarrinhoHidden.value = JSON.stringify(carrinho);
 }
 
 function limparCamposProduto() {
     inputNome.value = '';
-    inputPreco.value = '';
     inputQuantidade.value = '1';
     inputDesconto.value = '0.00';
     lblTotalItem.innerText = '0.00';
@@ -123,9 +168,35 @@ function limparCamposProduto() {
 }
 
 // Tratamento do Envio (POST)
-form.addEventListener('submit', (e) => {
-    if(carrinho.length === 0) {
-        e.preventDefault(); // Bloqueia o envio se não houver itens
-        alert('Seu carrinho está vazio! Adicione pelo menos um item para finalizar a compra.');
-    }
+btnSubmit.addEventListener('click', async () => {
+    try{
+		if(carrinho.length === 0) {
+	        alert('Seu carrinho está vazio! Adicione pelo menos um item para finalizar a compra.');
+            limparCamposProduto
+	    	return 
+		}
+		
+		const params = new URLSearchParams();
+	    params.append('dadosCarrinho', JSON.stringify(carrinho));
+		
+		const resp = await fetch(`/api/venda`, {
+			method: 'POST',
+			headers:{
+			  'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: params.toString()
+		})
+		
+		if (resp.ok) {
+	        alert('Venda realizada com sucesso!');
+	        sessionStorage.setItem('naoAtualizaNotificacao', false);
+	        
+	        window.location.reload(); 
+	    } else {
+	        alert('Erro ao processar a venda no servidor. Venda não realizada.');
+	    }
+	}catch(erro){
+		alert('Não foi possível conectar ao servidor.');
+	}
+	
 });

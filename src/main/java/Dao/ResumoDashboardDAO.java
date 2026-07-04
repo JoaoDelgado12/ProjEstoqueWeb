@@ -1,7 +1,6 @@
 package Dao;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
@@ -19,7 +18,7 @@ public class ResumoDashboardDAO {
         String sqlEntrada = "SELECT SUM(precoTotal) AS SomaPreco FROM Venda"; 
         String sqlSaida = "SELECT SUM(precoCompraTotal) AS SomaPreco FROM HistEstoque"; 
         
-        try (Connection con = ConnectionFactory.getConnection()) {
+        try (var con = ConnectionFactory.getConnection()) {
             
             BigDecimal entrada = BigDecimal.ZERO;
             try (PreparedStatement stmt = con.prepareStatement(sqlEntrada);

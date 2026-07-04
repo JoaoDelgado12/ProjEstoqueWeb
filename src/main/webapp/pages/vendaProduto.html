@@ -11,59 +11,73 @@
     
 </head>
 <body>
-    <header> 
-        <div class="grupo-mais">
-            <div class="secao-mais-off">
-                <ul>
-                    <li> <a href="./pagesCadastro/cadastroProduto.html">Cadastrar Produto</a> </li>
-                    <li> <a href="./pagesCadastro/cadastroUsuario.html">Cadastrar Usuario</a> </li>
-                    <li> <a href="./vendaProduto.html">Venda de produto</a> </li>
-                </ul>
+    <header>
+            <div class="notification-container">
+                <button class="notification-btn" id="notiBtn" title="Notificações">
+                    🔔
+                    <span class="notification-badge" id="notiBadge">0</span>
+                </button>
+
+                <div class="notification-dropdown" id="notiDropdown">
+                    <div class="dropdown-header">
+                        <span>Notificações de Estoque</span>
+                    </div>
+                    <div class="notification-historico" id="notiHistorico">
+
+                    </div>
+                </div>
             </div>
 
-            <!-- Modo cadastro off-->
-            <button class="header-mais">
-                <img src="../IMG/plus.svg" alt="botão de cadastrar produto"> 
-            </button>
-        </div>
+            <div class="grupo-mais">
+                <div class="secao-mais-off">
+                    <ul>
+                        <li> <a href="./pagesCadastro/cadastroProduto.html">Cadastrar Produto</a> </li>
+                        <li> <a href="./pagesCadastro/cadastroUsuario.html">Cadastrar Usuario</a> </li>
+                        <li> <a href="./vendaProduto.html">Venda de produto</a> </li>
+                    </ul>
+                </div>
 
-        <div class="user-profile-container">
-            <!-- Perfil -->
-            <button class="user-profile">
-                <img src="../IMG/userDefault.svg" alt="Foto de perfil do usuário">
-            </button>
-
-            <!-- Menu -->
-            <div class="profile-off">
-                <ul>
-                    <li> <a class="btn-invPerfil">Perfil</a> </li>
-                        <li> <form action="../logout" method="POST">
-                            <button type="submit" class="btn-invPerfil">Sair do Sistema</button>
-                            </form> 
-                    </li>
-                </ul>
+                <!-- Modo cadastro off-->
+                <button class="header-mais">
+                    <img src="../IMG/plus.svg" alt="botão de cadastrar produto" title="opcoes"> 
+                </button>
             </div>
-        </div>
-    </header>
+
+            <div class="user-profile-container">
+                <!-- Perfil -->
+                <button class="user-profile">
+                    <img src="../IMG/userDefault.svg" alt="Foto de perfil do usuário" title="Perfil">
+                </button>
+
+                <!-- Menu -->
+                <div class="profile-off">
+                    <ul>
+                        <li> <a class="btn-invPerfil">Perfil</a> </li>
+                         <li> <form action="../logout" method="POST">
+                                <button type="submit" class="btn-invPerfil">Sair do Sistema</button>
+                              </form> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
     <main>
-        <form action="/sua-api-de-venda" method="POST" id="formVenda" class="main-container">
+        <form id="formVenda" autocomplete="off" class="main-container">
             
             <div class="panel">
                 <h2>Venda de Produto</h2>
                 
-                <div class="form-group">
-                    <label for="nome">Nome do Produto</label>
-                    <input type="text" id="nome" name="nome" placeholder="Ex: Monitor Gamer 24'" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="precoUnitario">Preço Unitário (R$)</label>
-                    <input type="number" id="precoUnitario" name="precoUnitario" step="0.01" min="0" placeholder="0.00" required>
+                <div class="containerAutoCompletar">
+                    <div class="form-group">
+                        <label for="nome">Nome do Produto</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: Monitor Gamer 24'">
+                        <ul class="topicos-lista" id="janelaAuto"></ul>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="quantidade">Quantidade</label>
-                    <input type="number" id="quantidade" name="quantidade" min="1" value="1" required>
+                    <input type="number" id="quantidade" name="quantidade" min="1" value="1" >
                 </div>
 
                 <div class="form-group">
@@ -94,12 +108,10 @@
                     </div>
                     
                     <div class="btn-group">
-                        <button type="submit" class="btn-submit">Finalizar Compra</button>
+                        <button type="button" class="btn-submit" id="btn-submit">Finalizar Compra</button>
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" id="dadosCarrinhoHidden" name="itensCarrinho">
         </form>
     </main>
     <footer>
@@ -107,6 +119,7 @@
     </footer>
     <script src="../js/padraoPagina.js"> </script> 
     <script src="../js/logout.js"></script>
-    <script src="../js/vendaProduto.js"> </script> 
+    <script src="../js/vendaProduto.js"> </script>
+    <script src="../js/notificaoProduto.js"></script>
 </body>
 </html>

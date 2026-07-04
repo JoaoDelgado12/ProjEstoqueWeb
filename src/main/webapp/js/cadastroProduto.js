@@ -19,7 +19,7 @@ async function autoCompletar(consulta){
 	const url = `http://localhost:8080/api/consulta/${consulta}` 
 	
 
-    const resp = await  fetch(url);
+    const resp = await fetch(url);
     const dadosMarca = await resp.json();
 
     const inputMarca = document.getElementById(consulta);

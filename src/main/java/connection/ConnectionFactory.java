@@ -12,7 +12,7 @@ public class ConnectionFactory {
         private static final String PASSWORD = System.getenv("DB_PASS");
     //Métodos
         
-        public static Connection getConnection() throws ClassNotFoundException, SQLException{
+        public static Connection getConnection() throws SQLException{
             Connection con = null;
 
             try {
@@ -20,6 +20,8 @@ public class ConnectionFactory {
                 con = DriverManager.getConnection(URL, USER, PASSWORD);
                 System.err.println(URL);
                 
+            }catch(ClassNotFoundException eNull) {
+            	throw new Error("Classe CONNECTION não carregou");
             }catch (Exception e){
             	System.err.println(URL);
             	System.err.println(USER);

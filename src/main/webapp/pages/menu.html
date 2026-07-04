@@ -11,7 +11,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header> 
+        <header>
+            <div class="notification-container">
+                <button class="notification-btn" id="notiBtn" title="Notificações">
+                    🔔
+                    <span class="notification-badge" id="notiBadge">0</span>
+                </button>
+
+                <div class="notification-dropdown" id="notiDropdown">
+                    <div class="dropdown-header">
+                        <span>Notificações de Estoque</span>
+                    </div>
+                    <div class="notification-historico" id="notiHistorico">
+
+                    </div>
+                </div>
+            </div>
+
             <div class="grupo-mais">
                 <div class="secao-mais-off">
                     <ul>
@@ -23,14 +39,14 @@
 
                 <!-- Modo cadastro off-->
                 <button class="header-mais">
-                    <img src="../IMG/plus.svg" alt="botão de cadastrar produto"> 
+                    <img src="../IMG/plus.svg" alt="botão de cadastrar produto" title="opcoes"> 
                 </button>
             </div>
 
             <div class="user-profile-container">
                 <!-- Perfil -->
                 <button class="user-profile">
-                    <img src="../IMG/userDefault.svg" alt="Foto de perfil do usuário">
+                    <img src="../IMG/userDefault.svg" alt="Foto de perfil do usuário" title="Perfil">
                 </button>
 
                 <!-- Menu -->
@@ -80,6 +96,7 @@
         </footer>
         <script src="../js/padraoPagina.js"> </script> 
         <script src="../js/logout.js"></script>
+        <script src="../js/notificaoProduto.js"></script>
     </body>
 
 </html>

@@ -216,6 +216,159 @@ header {
     width: 100%;
 }
 
+.notification-container {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Emblema/Badge de Nova Notificação */
+.notification-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: #ff3b30; /* Vermelho vibrante de alerta */
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #2363ab; /* Combina com o fundo para dar acabamento */
+    transition: all 0.3s ease;
+}
+
+/* Esconde o badge quando não houver notificações novas */
+.notification-badge.hidden {
+    display: none;
+}
+
+/* Menu Dropdown de Notificações */
+.notification-dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 320px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    z-index: 1000;
+    display: none; /* Começa colapsado/fechado */
+    overflow: hidden;
+}
+
+/* Classe que JavaScript vai ativar para abrir o menu */
+.notification-dropdown.open {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-header {
+    padding: 12px 16px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Histórico com Rolagem (Scroller) */
+.notification-historico {
+    /* 3 itens de 72px cada + bordas = max-height de ~216px */
+    max-height: 216px; 
+    overflow-y: auto;
+}
+
+/* Customização da barra de rolagem para ficar elegante */
+.notification-historico::-webkit-scrollbar {
+    width: 6px;
+}
+.notification-historico::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Item de Notificação Individual */
+.notification-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    height: 72px; /* Altura fixa para garantir que mostre exatamente 3 */
+    transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+    background-color: #fdfdfd;
+}
+
+/* Ponto indicativo de notificação não lida dentro do histórico */
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita o texto a 2 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.notification-time {
+    font-size: 11px;
+    color: #888;
+}
+
+/* Estado Vazio */
+.no-notifications {
+    padding: 30px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Animação suave de abertura */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 body main {
     flex: 1; /* Faz a main empurrar o footer sempre para o final da página */
     margin-top: 70px; 

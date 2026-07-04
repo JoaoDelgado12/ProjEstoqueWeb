@@ -86,6 +86,7 @@ main button {
     transition: all 0.2s ease;
 }
 
+
 .btn-add {
     background-color: var(--primary-corfundolight);
     color: white;
@@ -188,4 +189,40 @@ main button {
     text-align: right;
     border-top: 2px dashed var(--border);
     padding-top: 15px;
+}
+
+.containerAutoCompletar{
+    position: relative;
+}
+
+/* Janela flutuante em formato de tópicos */
+.containerAutoCompletar .topicos-lista {
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    padding: 0;
+    list-style: none; /* Remove as bolinhas padrão da lista */
+    z-index: 100;
+    overflow: hidden;
+}
+/* Cada tópico individual */
+.containerAutoCompletar .topico-item {
+    padding: 12px 15px;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+/* Remove a linha divisória do último tópico */
+.containerAutoCompletar .topico-item:last-child {
+    border-bottom: none;
+}
+/* Efeito visual ao passar o mouse ou usar o teclado */
+.containerAutoCompletar .topico-item:hover {
+    background-color: #f1f7ff;
+    color: #007bff;
 }

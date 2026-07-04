@@ -12,6 +12,22 @@
     </head>
     <body>
     <header> 
+        <div class="notification-container">
+            <button class="notification-btn" id="notiBtn" title="Notificações">
+                🔔
+                <span class="notification-badge" id="notiBadge">0</span>
+            </button>
+
+            <div class="notification-dropdown" id="notiDropdown">
+                <div class="dropdown-header">
+                    <span>Notificações de Estoque</span>
+                </div>
+                <div class="notification-history" id="notiHistorico">
+
+                </div>
+            </div>
+        </div>
+
         <div class="grupo-mais">
             <div class="secao-mais-off">
                 <ul>
@@ -126,5 +142,6 @@
     <script src="../js/dashboard.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/padraoPagina.js"> </script> 
+    <script src="../js/notificaoProduto.js"></script>
 </body>
 </html>

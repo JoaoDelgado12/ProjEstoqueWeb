@@ -75,11 +75,11 @@ CREATE TABLE IF NOT EXISTS DataPrecoVenda(
 
 CREATE TABLE IF NOT EXISTS Produto(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	nome VARCHAR(120),
+	nome VARCHAR(120) UNIQUE,
 	marca VARCHAR(120),
 	CONSTRAINT fk_marca_Produto FOREIGN KEY (marca) REFERENCES Marca(marca) on update cascade on delete restrict,
 	fornecedor VARCHAR(120),
-	CONSTRAINT fk_fornecedor_Produto FOREIGN KEY (fornecedor) REFERENCES Fornecedor(id) on update cascade,
+	CONSTRAINT fk_fornecedor_Produto FOREIGN KEY (fornecedor) REFERENCES Fornecedor(nome) on update cascade,
 	precoVendaUni DECIMAL(10,2),
 	quantidade INT,
 	quantidadeMin INT,
@@ -103,12 +103,6 @@ CREATE TABLE IF NOT EXISTS Venda(
 	dataVenda DATE
 );
 
-CREATE TABLE IF NOT EXISTS Cupom(
-	id int AUTO_INCREMENT PRIMARY KEY,
-	descontoPorcent DECIMAL(10,2),
-	descontoReal DECIMAL(10,2),
-	usoQuantidadeMax INT
-);
 
 CREATE TABLE IF NOT EXISTS ItensVenda(
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -122,12 +116,5 @@ CREATE TABLE IF NOT EXISTS ItensVenda(
 	CONSTRAINT fk_venda_ItensVenda FOREIGN KEY (venda) REFERENCES Venda(id) on update cascade on delete cascade
 );
 
-CREATE TABLE IF NOT EXISTS CupomVenda(
-	vendaID int,
-	CONSTRAINT fk_vendaID_CupomVenda FOREIGN KEY (vendaID) REFERENCES Venda(id) on update cascade,
-	cupomID int,
-	CONSTRAINT fk_cupomID_CupomVenda FOREIGN KEY (cupomID) REFERENCES Cupom(id) on update cascade,
-	PRIMARY KEY (vendaID, cupomID)
-);
 
 
