@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class VendaProdutoController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		System.err.println("CHEGOU NO ENDPOINT");
+
 	    request.setCharacterEncoding("UTF-8");
 		
 	    try {
@@ -36,7 +36,7 @@ public class VendaProdutoController extends HttpServlet{
 		    double precoTotal = 0;
 		    double desconto = 0;
 		    for(VendaProdutoModel item : itensCarrinho) {
-		    	precoTotal += Double.parseDouble(item.getDesconto());
+		    	precoTotal += Double.parseDouble(item.getTotal());
 		    	desconto += Double.parseDouble(item.getDesconto());
 		    }
 

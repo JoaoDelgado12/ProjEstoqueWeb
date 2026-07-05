@@ -190,7 +190,7 @@ btnSubmit.addEventListener('click', async () => {
 		if (resp.ok) {
 	        alert('Venda realizada com sucesso!');
 	        sessionStorage.setItem('naoAtualizaNotificacao', false);
-	        
+	        console.log(sessionStorage.getItem('naoAtualizaNotificacao'))
 	        window.location.reload(); 
 	    } else {
 	        alert('Erro ao processar a venda no servidor. Venda não realizada.');

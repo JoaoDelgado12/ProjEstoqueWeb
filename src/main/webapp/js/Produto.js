@@ -31,10 +31,9 @@ function gerarCards() {
     dadosProdutos.forEach(prod => {
         const card = document.createElement('div');
         card.classList.add('card-produto');
-
-        if (prod.quantidade < prod.quantidadeMin) {
+        if (parseInt(prod.quantidade) < parseInt(prod.quantidadeMin)) {
             card.classList.add('card-critico');
-        } else if (prod.quantidade <= prod.quantidadeMin + 5) {
+        } else if ( parseInt(prod.quantidade) <= parseInt(prod.quantidadeMin) + 5) {
             card.classList.add('card-atencao');
         } else {
             card.classList.add('card-normal');
@@ -50,7 +49,7 @@ function gerarCards() {
             
             <div class="card-rodape">
                 <div class="card-preco">R$ ${parseFloat(prod.precoVendaUni).toFixed(2)}</div>
-                <a href="detalhes.html?id=${prod.id}" class="btn-link-seta">
+                <a" class="btn-link-seta">
                     Gerenciar &rarr;
                 </a>
             </div>

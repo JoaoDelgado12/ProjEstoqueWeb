@@ -125,13 +125,13 @@ h2 {
 /* --- Classes de Estilo Aplicadas pelo JS --- */
 
 /* Estado Crítico */
-.card-critico::before { background-color: var(--color-danger); }
-.card-critico .card-titulo { color: var(--color-danger); }
+.card-critico::before { background-color: var(--red-aviso); }
+.card-critico .card-titulo { color: var(--red-aviso); }
 
 /* Estado Atenção */
 .card-atencao::before { background-color: var(--color-warning); }
 .card-atencao .card-titulo { color: var(--color-warning); }
 
 /* Estado Normal */
-.card-normal::before { background-color: #cbd5e1; }
-.card-normal .card-titulo { color: var(--text-default); }
+.card-normal::before { background-color: var(--color-normal); }
+.card-normal .card-titulo { color: #334155; }

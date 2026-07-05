@@ -23,7 +23,7 @@ main {
     flex: 1;
     padding: 20px;
     text-align: center;
-    color: var(--white)
+    color: var(--white);
     transition: transform 0.2s;
 }
 
@@ -118,11 +118,15 @@ label{
 
 .tabela-wrapper {
     width: 100%;
+    max-height: 380px;
     overflow-x: auto;
     margin: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+
+
+
 
 #tabelaEstoque {
     width: 100%;
@@ -162,37 +166,19 @@ label{
     border-top-right-radius: 8px;
 }
 
-
-/*
-.tabela-wrapper {
-    display: flex;
-    width: 90vw;
-    justify-content: center;
-    background-color: var(--white);
-    box-shadow: 0 4px 6px var(--shadow-default);
-    border-radius: 5px;
-    overflow: hidden;
+#corpoTabela{
+    overflow-y: auto;
 }
 
-#tabelaEstoque thead{
-    display:flex;
-    flex-direction: column;
+#corpoTabela::-webkit-scrollbar {
+    width: 6px;
+}
+#corpoTabela::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
 }
 
-#tabelaEstoque th{
-    padding: 8px 15px;
-    margin: 5px 2px 3px;
-    text-align: center;
-    background-color: var(--gray-light);
-    font-weight: bold;
-}
 
-#tabelaEstoque td {
-    padding: 12px;
-    text-align: center;
-}
-
-*/
 #paginacao{
     display: flex;
     flex-direction: row;
