@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../css/reset.css"/>
+        <link rel="stylesheet" href="../css/color.css"/>
+        <link rel="stylesheet" href="../css/cadastroProduto.css"/>
+        <title>Gerenciar Produto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header> 
+            <div class="notification-container">
+                <button class="notification-btn" id="notiBtn" title="Notificações">
+                    🔔
+                    <span class="notification-badge" id="notiBadge"></span>
+                </button>
+
+                <div class="notification-dropdown" id="notiDropdown">
+                    <div class="dropdown-header">
+                        <span>Notificações de Estoque</span>
+                    </div>
+                    <div class="notification-historico" id="notiHistorico">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-mais">
+                <div class="secao-mais-off">
+                    <ul>
+                        <li> <a href="./pagesCadastro/cadastroProduto.html">Cadastrar Produto</a> </li>
+                        <li> <a href="./pagesCadastro/cadastroUsuario.html">Cadastrar Usuario</a> </li>
+                        <li> <a href="./vendaProduto.html">Venda de produto</a> </li>
+                    </ul>
+                </div>
+
+                <!-- Modo cadastro off-->
+                <button class="header-mais">
+                    <img src="../IMG/plus.svg" alt="botão de cadastrar produto"> 
+                </button>
+            </div>
+
+            <div class="user-profile-container">
+                <!-- Perfil -->
+                <button class="user-profile">
+                    <img src="../IMG/userDefault.svg" alt="Foto de perfil do usuário">
+                </button>
+
+                <!-- Menu -->
+                <div class="profile-off">
+                    <ul>
+                        <li> <a class="btn-invPerfil">Perfil</a> </li>
+                            <li> <form action="../logout" method="POST">
+                                <button type="submit" class="btn-invPerfil">Sair do Sistema</button>
+                                </form> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main id="main">
+        	<form autocomple="off" method="post">
+	            <div class="container">
+	                <div class="containerPrincipal">
+	                    <div class="dadosProduto">
+	                        <label for="nome">Nome</label>
+	                        <input type="text"  name="nome" id="nome" placeholder="Nome do produto" />
+	                        <div class="containerAutoCompletar">
+	                            <label for="marca">Marca</label>
+	                            <input type="text" name="marca" id="marca" placeholder="Nome da marca" />
+	                            <ul class="topicos-lista" id="janelaAutomarca"></ul>
+	                        </div>
+	                        <div class="containerAutoCompletar">
+	                            <label for="fornecedor">Fornecedor</label>
+	                            <input type="text" name="fornecedor" id="fornecedor" placeholder="Nome do fornecedor" />
+	                            <ul class="topicos-lista" id="janelaAutofornecedor"></ul>
+	                        </div>
+	                        <label for="quantidade">Quantidade</label>
+	                        <input type="text" name="quantidadeEstoque" id="quantidade" placeholder="Quantidade atual do estoque" />
+	                        <label for="quantidadeMin">Quantidade mínima</label>
+	                        <input type="text" name="quantidadeMinima" id="quantidadeMin" placeholder="Quantidade para reposição" />
+	                        <label for="precoVendaUni">Preço de venda (unidade)</label>
+	                        <input type="text" name="precoVendaUnidade" id="precoVendaUni" placeholder="Preco de venda do produto" />
+	                        <label for="localArmazenamento">Local de armazenamento</label>
+	                        <input type="text" name="localArmazenamento" id="localArmazenamento" placeholder="Local de armazenamento" />
+	                    </div>
+	                    <div class="btn">
+	                        <button id="cadastrar">Cadastrar</button>
+	                        <button id="addEstoque" type="button">add estoque</button>
+	                    </div>
+	                </div>
+	                <div class="containerEstoque">
+	                    <label for="precoCompraUni">Preco de Compra (unidade) </label>
+	                    <input type="text" name="precoCompraUnidade" id="precoCompraUni" placeholder="Preço da compra do produto"/>
+	                    <label for="quantidade"> Quantidade </label>
+	                    <input type="text" name="quantidadeCompra" id="quantidadeCompra" placeholder="Quantidade da compra"/>
+	                    <label for="precoCompraTotal"> Preco total da Compra </label>
+	                    <input type="text" name="precoCompraTotal" id="precoCompraTotal" placeholder="Preco total da compra"/>
+	                    <label for="dtaCompra">Data de compra</label>
+	                    <input type="date" name="dtaCompra" id="dtaCompra" />
+	                </div>
+	            </div>
+            </form>
+        </main>
+        <script src="../../js/cadastroProduto.js"></script>
+    </body>
+</html>

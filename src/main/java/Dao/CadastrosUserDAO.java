@@ -103,7 +103,7 @@ public class CadastrosUserDAO {
 			listUser = new String[]{user.getNome(), user.getSobrenome(), user.getCpf()};
 			int sizeOld = listUser.length;
 			for(int i=0; i<sizeOld; i++) {
-				if(listUser[i] == null && listUser[i].trim().isEmpty()) {
+				if(listUser[i] == null || listUser[i].trim().isEmpty()) {
 					throw new RuntimeException("Dados Obrigatorio");
 				}else {
 					stmt.setString(i+2, listUser[i]);
@@ -114,7 +114,7 @@ public class CadastrosUserDAO {
 			
 			for(int i=0; i<listUser.length; i++) {
 				if(listUser[i] == null || listUser[i].trim().isEmpty()) {
-					stmt.setNull(i, java.sql.Types.VARCHAR);
+					stmt.setNull(i + sizeOld + 2, java.sql.Types.VARCHAR);
 				}else {
 					stmt.setString(i + sizeOld + 2, listUser[i]);
 					

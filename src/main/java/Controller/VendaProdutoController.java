@@ -39,8 +39,10 @@ public class VendaProdutoController extends HttpServlet{
 		    	precoTotal += Double.parseDouble(item.getTotal());
 		    	desconto += Double.parseDouble(item.getDesconto());
 		    }
-
-		    VendaProdutoDAO.registrarVenda(itensCarrinho, precoTotal, desconto );
+		    
+		    VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+		    
+		    vendaProdutoDAO.registrarVenda(itensCarrinho, precoTotal, desconto );
 		    
 		    response.setStatus(HttpServletResponse.SC_OK);
 		    

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/api/cadastro/usuario")
 public class CadastroController extends HttpServlet {
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         
         CadastroUsuarioModel cadastroUser = new CadastroUsuarioModel(

@@ -1,5 +1,16 @@
 let dadosProdutos=[];
 
+async function gerenciarProduto(){
+    const nomeProduto = event.target.getAttribute('id'); //pegando o id do gerenciar que tem o nome do produto
+    
+    try{
+        const resp = await fetch(`http://localhost:8080/api/gerenciar/produto?nome=${encodeURIComponent(nomeProduto)}`);
+
+    }catch(error){
+        alert('Erro no gereciamento do produto ' + `${nomeProduto}`);
+    }
+}
+
 async function carregarProdutos() {
     try {
         const resp = await fetch(`http://localhost:8080/api/consulta/produto`);
@@ -49,8 +60,8 @@ function gerarCards() {
             
             <div class="card-rodape">
                 <div class="card-preco">R$ ${parseFloat(prod.precoVendaUni).toFixed(2)}</div>
-                <a" class="btn-link-seta">
-                    Gerenciar &rarr;
+                <a class="btn-link-seta" id="${prod.nome}">
+                    Gerenciar;
                 </a>
             </div>
         `;

@@ -11,7 +11,7 @@ import connection.ConnectionFactory;
 import model.VendaProdutoModel;
 
 public class VendaProdutoDAO {
-	public static void registrarVenda(List<VendaProdutoModel> Carrinho, double precoTotal, double desconto) throws SQLException {
+	public  void registrarVenda(List<VendaProdutoModel> Carrinho, double precoTotal, double desconto) throws SQLException {
 		String sqlIDProduto= "SELECT id FROM Produto WHERE nome = ?";
 		String sqlVenda = "INSERT INTO Venda (precoTotal, desconto, dataVenda) VALUES (?, ?, ?)";
         String sqlItensVenda = "INSERT INTO ItensVenda (quantidade, produto, venda, "
