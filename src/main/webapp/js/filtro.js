@@ -5,7 +5,7 @@ async function filtroEstoque(){
         const data  = document.getElementById("filtroData").value
 		
 		
-        const url = `http://localhost:8080/api/estoque/filtro?nome=${encodeURIComponent(nome)}&marca=${encodeURIComponent(marca)}&data=${encodeURIComponent(data)}`
+        const url = `/api/estoque/filtro?nome=${encodeURIComponent(nome)}&marca=${encodeURIComponent(marca)}&data=${encodeURIComponent(data)}`
 
 		
 		const response = await fetch(url)

@@ -4,14 +4,17 @@ services:
   db: 
     image: mysql:8
     container_name: mysql-db
-    restart: always
+    restart: unless-stopped
+    networks:
+      inner_net:
+        ipv4_address: 192.168.20.2
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: ${DB_NAME}
     ports: 
       - "${DB_PORT_EXTERNAL}:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - volBank:/var/lib/mysql
       - ./src/main/webapp/db:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
@@ -20,11 +23,27 @@ services:
       retries: 5
       start_period: 90s
 
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: tunnel
+    restart: unless-stopped
+    networks:
+      extra_net:
+        ipv4_address: 192.168.30.3
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run
+
   app:
     build: .
     image: stockmei
     container_name: app-stockmei
-    restart: always
+    restart: unless-stopped
+    networks:
+      inner_net:
+        ipv4_address: 192.168.20.3
+      extra_net:
+        ipv4_address: 192.168.30.2
     ports: 
       - "8080:8080"
     depends_on:
@@ -35,5 +54,29 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
       - DB_PASSDEFAULT=${DB_PASSDEFAULT}
+
+networks:
+  inner_net:
+    name: interna
+    driver: bridge
+    labels:
+      com.example.description: "Rede entre o banco e o app"
+      com.example.department: "interno"
+    ipam:
+      config:
+        - subnet: 192.168.20.0/29 
+          gateway: 192.168.20.6
+
+  extra_net:
+    name: externa
+    driver: bridge
+    labels:
+      com.example.description: "Rede para internet externo com o cloudflare"
+      com.example.department: "externo"
+    ipam:
+      config:
+        - subnet: 192.168.30.0/29  
+          gateway: 192.168.30.6
+
 volumes:
-  db_data:
+  volBank:

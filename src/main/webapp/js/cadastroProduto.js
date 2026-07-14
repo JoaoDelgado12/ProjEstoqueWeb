@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 async function autoCompletar(consulta){
-	const url = `http://localhost:8080/api/consulta/${consulta}` 
+	const url = `/api/consulta/${consulta}` 
 	
 
     const resp = await fetch(url);

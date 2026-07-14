@@ -4,7 +4,7 @@ async function gerenciarProduto(){
     const nomeProduto = event.target.getAttribute('id'); //pegando o id do gerenciar que tem o nome do produto
     
     try{
-        const resp = await fetch(`http://localhost:8080/api/gerenciar/produto?nome=${encodeURIComponent(nomeProduto)}`);
+        const resp = await fetch(`/api/gerenciar/produto?nome=${encodeURIComponent(nomeProduto)}`);
 
     }catch(error){
         alert('Erro no gereciamento do produto ' + `${nomeProduto}`);
@@ -13,7 +13,7 @@ async function gerenciarProduto(){
 
 async function carregarProdutos() {
     try {
-        const resp = await fetch(`http://localhost:8080/api/consulta/produto`);
+        const resp = await fetch(`/api/consulta/produto`);
         const dados = await resp.json();
         
         dados.forEach(produto => {

@@ -91,7 +91,7 @@ function processarAtualizacaoEstoque(produtosNovos) {
 
 async function verificarProdutosDoServidor() {
     try {
-        const url = `http://localhost:8080/api/consulta/produto`;
+        const url = `/api/consulta/produto`;
         const response = await fetch(url);
         const dados = await response.json();
         

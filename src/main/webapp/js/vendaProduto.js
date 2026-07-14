@@ -14,7 +14,7 @@ let carrinho = [];
 let dados;
 
 async function autoCompletar(){
-	const url = `http://localhost:8080/api/consulta/produto` 
+	const url = `/api/consulta/produto` 
 	
     const resp = await fetch(url);
     dados = await resp.json();
